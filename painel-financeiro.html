@@ -11,7 +11,7 @@
   --paper:#F6F1E4;
   --paper-card:#FFFDF7;
   --ink:#1E2B22;
-  --ink-soft:#5B6459;
+  --ink-soft:#4A5348;
   --green:#2F5233;
   --green-deep:#1B3A2F;
   --gold:#A9782F;
@@ -27,7 +27,7 @@ body.theme-michelle{
   --paper:#F7EFEC;
   --paper-card:#FFFBFA;
   --ink:#3A2C2E;
-  --ink-soft:#7A6266;
+  --ink-soft:#674E52;
   --green:#B06A82;
   --green-deep:#7A3F55;
   --gold:#C98A98;
@@ -47,7 +47,7 @@ body.theme-gabriel{
   --paper:#F1F1EF;
   --paper-card:#FFFFFF;
   --ink:#111111;
-  --ink-soft:#5C5C5C;
+  --ink-soft:#494949;
   --green:#2B2B2B;
   --green-deep:#000000;
   --gold:#4A4A4A;
@@ -68,15 +68,40 @@ body{
   font-family:'Inter',sans-serif;
   padding:32px 16px 80px;
   min-height:100vh;
+  line-height:1.5;
 }
 
-.wrap{max-width:1040px;margin:0 auto;}
+.wrap{max-width:1040px;margin:0 auto;transition:max-width 0.2s;}
+body.view-mobile .wrap{max-width:430px;}
+body.view-mobile .grid{grid-template-columns:1fr;}
+
+.tabs-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:18px;
+}
 
 .tabs{
   display:flex;
   gap:6px;
-  margin-bottom:18px;
 }
+
+.view-toggle-btn{
+  font-family:'Inter',sans-serif;
+  font-size:13px;
+  font-weight:500;
+  padding:7px 14px;
+  border:1px solid var(--line-strong);
+  background:var(--paper-card);
+  color:var(--ink-soft);
+  border-radius:14px;
+  cursor:pointer;
+  white-space:nowrap;
+}
+.view-toggle-btn:hover{border-color:var(--gold);color:var(--green-deep);}
 
 .tab-btn{
   font-family:'Fraunces',serif;
@@ -121,7 +146,7 @@ body{
 }
 
 .masthead-sub{
-  font-size:13px;
+  font-size:14px;
   color:var(--ink-soft);
   margin-top:4px;
   font-style:italic;
@@ -192,7 +217,7 @@ body{
 }
 
 .stat-block{text-align:right;}
-.stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);margin:0 0 4px;}
+.stat-label{font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);margin:0 0 4px;}
 .stat-value{font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:500;margin:0;}
 .stat-value.income{color:var(--green-deep);}
 .stat-value.expense{color:var(--red);}
@@ -261,13 +286,13 @@ body{
 .row-check svg{width:11px;height:11px;stroke:var(--paper-card);display:none;}
 .row-check.checked svg{display:block;}
 
-.row-name{flex:1;font-size:14px;min-width:0;}
+.row-name{flex:1;font-size:15px;line-height:1.4;min-width:0;}
 .row-name.paid{color:var(--ink-soft);text-decoration:line-through;text-decoration-color:var(--line-strong);}
-.row-day{font-size:11px;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;white-space:nowrap;}
+.row-day{font-size:12px;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;white-space:nowrap;}
 
 .row-value{
   font-family:'IBM Plex Mono',monospace;
-  font-size:14px;
+  font-size:15px;
   font-weight:500;
   white-space:nowrap;
   min-width:76px;
@@ -278,7 +303,7 @@ body{
 
 .row-value-edit{
   font-family:'IBM Plex Mono',monospace;
-  font-size:14px;
+  font-size:15px;
   font-weight:500;
   white-space:nowrap;
   min-width:76px;
@@ -318,7 +343,7 @@ body{
 .row-del:hover{color:var(--red);}
 
 .empty-msg{
-  font-size:13px;
+  font-size:14px;
   color:var(--ink-soft);
   font-style:italic;
   padding:10px 0;
@@ -332,7 +357,7 @@ body{
 }
 .add-form input{
   font-family:'Inter',sans-serif;
-  font-size:13px;
+  font-size:14px;
   padding:8px 10px;
   border:1px solid var(--line);
   border-radius:2px;
@@ -343,10 +368,10 @@ body{
 .add-form input:focus{border-color:var(--gold);}
 .add-form .f-name{flex:2;min-width:110px;}
 .add-form .f-value{flex:1;min-width:80px;}
-.add-form .f-day{width:56px;}
+.add-form .f-day{width:92px;}
 .add-btn{
   font-family:'Inter',sans-serif;
-  font-size:13px;
+  font-size:14px;
   font-weight:500;
   padding:8px 14px;
   border:1px solid var(--green-deep);
@@ -364,7 +389,7 @@ body{
   margin-top:4px;
   border-top:1px solid var(--line-strong);
   font-family:'IBM Plex Mono',monospace;
-  font-size:13px;
+  font-size:14px;
   font-weight:600;
 }
 
@@ -381,13 +406,22 @@ body{
 .debt-item:last-child{border-bottom:none;}
 
 .debt-main{flex:1;min-width:160px;}
-.debt-name{font-size:14px;font-weight:500;margin:0 0 4px;}
+.debt-name{font-size:15px;font-weight:500;margin:0 0 4px;overflow-wrap:anywhere;}
 .debt-name.paid{color:var(--ink-soft);text-decoration:line-through;text-decoration-color:var(--line-strong);}
 .debt-progress-wrap{
   height:5px;background:var(--line);border-radius:3px;overflow:hidden;width:100%;max-width:220px;
 }
 .debt-progress-bar{height:100%;background:var(--gold);}
-.debt-meta{font-size:11px;color:var(--ink-soft);margin-top:4px;font-family:'IBM Plex Mono',monospace;}
+
+.debt-actions{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+
+body.view-mobile .debt-item{flex-direction:column;align-items:stretch;gap:10px;}
+body.view-mobile .debt-main{width:100%;min-width:0;}
+body.view-mobile .debt-progress-wrap{max-width:none;}
+body.view-mobile .debt-actions{width:100%;justify-content:space-between;}
+body.view-mobile .add-form .f-name,
+body.view-mobile .add-form .f-value{flex:1 1 100%;}
+.debt-meta{font-size:12px;color:var(--ink-soft);margin-top:4px;font-family:'IBM Plex Mono',monospace;}
 
 .stamp{
   font-family:'IBM Plex Mono',monospace;
@@ -416,12 +450,12 @@ body{
 }
 
 .close-month-text{max-width:560px;}
-.close-month-text p{margin:0 0 4px;font-size:13px;color:var(--ink-soft);line-height:1.5;}
+.close-month-text p{margin:0 0 4px;font-size:14px;color:var(--ink-soft);line-height:1.5;}
 .close-month-text strong{color:var(--green-deep);}
 
 .close-month-btn{
   font-family:'Inter',sans-serif;
-  font-size:13px;
+  font-size:14px;
   font-weight:500;
   padding:11px 20px;
   border:1px solid var(--gold);
@@ -441,7 +475,7 @@ body{
   background:var(--green-deep);
   color:var(--paper-card);
   font-family:'Inter',sans-serif;
-  font-size:13px;
+  font-size:14px;
   padding:12px 20px;
   border-radius:4px;
   opacity:0;
@@ -463,7 +497,7 @@ body{
 }
 
 .saved-tag{
-  font-size:11px;
+  font-size:12px;
   color:var(--ink-soft);
   font-style:italic;
   opacity:0;
@@ -496,6 +530,20 @@ const ACTIVE_USER_KEY = 'painel-financeiro-active-user';
 function storageKey(userId){ return 'painel-financeiro-v1-' + userId; }
 
 let activeUser = 'michelle';
+
+const VIEW_MODE_KEY = 'painel-financeiro-view-mode';
+let viewMode = 'pc';
+function loadViewMode(){
+  try{
+    const v = localStorage.getItem(VIEW_MODE_KEY);
+    if(v === 'pc' || v === 'mobile') viewMode = v;
+  }catch(e){}
+}
+function toggleViewMode(){
+  viewMode = viewMode === 'mobile' ? 'pc' : 'mobile';
+  try{ localStorage.setItem(VIEW_MODE_KEY, viewMode); }catch(e){}
+  render();
+}
 
 let dataByUser = {};
 function emptyData(){
@@ -601,6 +649,7 @@ function switchUser(userId){
 function render(){
   document.body.classList.toggle('theme-michelle', activeUser === 'michelle');
   document.body.classList.toggle('theme-gabriel', activeUser === 'gabriel');
+  document.body.classList.toggle('view-mobile', viewMode === 'mobile');
   const app = document.getElementById('app');
   const data = currentData();
   const income = totalIncome();
@@ -613,8 +662,11 @@ function render(){
   const debtPaidCount = activeDebts().filter(d=>d.paid).length;
 
   app.innerHTML = `
-    <div class="tabs">
-      ${USERS.map(u=>`<button class="tab-btn ${u.id===activeUser?'active':''}" data-switch-user="${u.id}">${u.label}</button>`).join('')}
+    <div class="tabs-row">
+      <div class="tabs">
+        ${USERS.map(u=>`<button class="tab-btn ${u.id===activeUser?'active':''}" data-switch-user="${u.id}">${u.label}</button>`).join('')}
+      </div>
+      <button class="view-toggle-btn" id="view-toggle-btn">${viewMode==='mobile' ? '🖥️ Ver como PC' : '📱 Ver como celular'}</button>
     </div>
 
     <div class="masthead">
@@ -680,7 +732,7 @@ function render(){
                 <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
               <span class="row-name ${f.paid?'paid':''}">${escapeHtml(f.name)}${f.carryOver?'<span class="carry-tag">em aberto</span>':''}</span>
-              ${f.day ? `<span class="row-day">dia ${f.day}</span>` : ''}
+              ${f.day ? `<span class="row-day">vence dia ${f.day}</span>` : ''}
               ${f.carryOver
                 ? `<input class="row-value-edit" type="number" step="0.01" data-edit-fixed="${f.id}" value="${Number(f.value)}">`
                 : `<span class="row-value expense">${fmt(Number(f.value))}</span>`}
@@ -690,7 +742,7 @@ function render(){
         <div class="add-form">
           <input class="f-name" id="fixed-name" type="text" placeholder="Ex: Aluguel">
           <input class="f-value" id="fixed-value" type="number" step="0.01" placeholder="Valor">
-          <input class="f-day" id="fixed-day" type="number" min="1" max="31" placeholder="Dia">
+          <input class="f-day" id="fixed-day" type="number" min="1" max="31" placeholder="Dia venc." title="Dia do vencimento no mês (1 a 31, opcional)">
           <button class="add-btn" id="add-fixed-btn">Adicionar</button>
         </div>
         <div class="subtotal-row"><span>Total</span><span>${fmt(fixed)}</span></div>
@@ -710,21 +762,23 @@ function render(){
             <div class="debt-progress-wrap"><div class="debt-progress-bar" style="width:${pct}%"></div></div>
             <p class="debt-meta">${d.paidInstallments}/${d.totalInstallments} parcelas ${d.day ? '· vence dia '+d.day : ''}</p>
           </div>
-          ${!finished ? `
-          <div class="row-check ${d.paid?'checked':''}" data-toggle-debt="${d.id}" title="Marcar parcela deste mês como paga">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="debt-actions">
+            ${!finished ? `
+            <div class="row-check ${d.paid?'checked':''}" data-toggle-debt="${d.id}" title="Marcar parcela deste mês como paga">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="row-value expense">${fmt(Number(d.installment))}</span>` : `<span class="row-value" style="color:var(--ink-soft)">—</span>`}
+            <button class="row-del" data-del-debt="${d.id}" aria-label="Remover">×</button>
           </div>
-          <span class="row-value expense">${fmt(Number(d.installment))}</span>` : `<span class="row-value" style="color:var(--ink-soft)">—</span>`}
-          <button class="row-del" data-del-debt="${d.id}" aria-label="Remover">×</button>
         </div>`;
       }).join('') : '<p class="empty-msg">Nenhuma dívida cadastrada ainda.</p>'}
 
       <div class="add-form" style="margin-top:16px;">
         <input class="f-name" id="debt-name" type="text" placeholder="Ex: Financiamento do carro">
         <input class="f-value" id="debt-value" type="number" step="0.01" placeholder="Valor da parcela">
-        <input class="f-day" id="debt-total" type="number" min="1" placeholder="Nº parcelas" style="width:80px;">
-        <input class="f-day" id="debt-paid" type="number" min="0" placeholder="Já pagas" style="width:80px;">
-        <input class="f-day" id="debt-day" type="number" min="1" max="31" placeholder="Dia">
+        <input class="f-day" id="debt-total" type="number" min="1" placeholder="Parcelas" title="Número total de parcelas" style="width:100px;">
+        <input class="f-day" id="debt-paid" type="number" min="0" placeholder="Já pagas" title="Quantas parcelas já foram pagas até agora" style="width:100px;">
+        <input class="f-day" id="debt-day" type="number" min="1" max="31" placeholder="Dia venc." title="Dia do vencimento no mês (1 a 31, opcional)">
         <button class="add-btn" id="add-debt-btn">Adicionar</button>
       </div>
       <div class="subtotal-row"><span>Total em parcelas ativas</span><span>${fmt(debts)}</span></div>
@@ -733,7 +787,7 @@ function render(){
     <div class="close-month-box">
       <div class="close-month-text">
         <p><strong>O que este botão faz:</strong> pega tudo que você marcou com o check ✓ (gastos fixos e parcelas de dívidas) e considera pago neste mês.</p>
-        <p>Ao fechar: as parcelas de dívida marcadas avançam +1 (ex: 3/12 vira 4/12), e todos os checks são desmarcados para o próximo mês começar do zero. A renda não muda. Se o saldo previsto ficar negativo, a diferença é lançada automaticamente como um gasto fixo "em aberto" para o próximo mês, com valor editável.</p>
+        <p>Ao fechar: as parcelas de dívida marcadas avançam +1 (ex: 3/12 vira 4/12), e todos os checks são desmarcados para o próximo mês começar do zero. A renda não muda. Se o saldo previsto ficar negativo, a diferença é lançada automaticamente como um gasto fixo "em aberto" para o próximo mês, com valor editável. O mês de referência também avança automaticamente.</p>
         <p>Agora: <strong>${fixedPaidCount} de ${data.fixed.length}</strong> gastos fixos marcados, <strong>${debtPaidCount} de ${activeDebts().length}</strong> parcelas marcadas.</p>
       </div>
       <button class="close-month-btn" id="close-month-btn">Fechar mês</button>
@@ -757,6 +811,8 @@ function attachEvents(){
   document.querySelectorAll('[data-switch-user]').forEach(el=>{
     el.addEventListener('click', ()=>switchUser(el.dataset.switchUser));
   });
+
+  document.getElementById('view-toggle-btn').addEventListener('click', toggleViewMode);
 
   document.getElementById('month-prev').addEventListener('click', ()=>{
     currentData().month = shiftMonth(currentData().month, -1);
@@ -870,6 +926,8 @@ function attachEvents(){
       carryMsg = ` Saldo negativo de ${fmt(amount)} enviado como valor em aberto para o próximo mês.`;
     }
 
+    data.month = shiftMonth(data.month, 1);
+
     saveData(); render();
     showToast(`Mês fechado: ${fixedClosed} gasto${fixedClosed===1?'':'s'} fixo${fixedClosed===1?'':'s'} quitado${fixedClosed===1?'':'s'} e ${debtsAdvanced} parcela${debtsAdvanced===1?'':'s'} avançada${debtsAdvanced===1?'':'s'}.${carryMsg}`);
   });
@@ -878,6 +936,7 @@ function attachEvents(){
 async function init(){
   await loadActiveUser();
   await loadUserData(activeUser);
+  loadViewMode();
   render();
 }
 
